@@ -1,0 +1,13 @@
+%h1 User Page
+%p
+  = @user.full_name
+  %br
+  = @user.email
+  %br
+  = @user.id
+  %br
+- if @user.reservations.count > 0
+  %h2 Your Reservations
+  - @user.reservations.each do |r|
+    = 'Your ' + r.room.name + ' room reservation at ' + r.room.hotel_name
+    %br

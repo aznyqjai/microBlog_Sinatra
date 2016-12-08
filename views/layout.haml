@@ -1,5 +1,18 @@
 %html
   %head
-    %title Sinatra-ActiveRecord
+  %link{:type => "text/css", :rel => "stylesheet", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
+  %link{:type => "text/css", :rel => "stylesheet", :href => "/css/style.css"}
+  %title Sinatra-ActiveRecord
   %body
-    = yield
+    %nav
+      %a{href: '/'} Home
+      %a{href: '/users'} Users
+      %a{href: '/users/create'} Create Users
+      %a{href: '/users/last'} Last
+      - if current_user
+        %a{href: '/logout'} Logout
+      - else
+        %a{href: '/login'} Login
+        %a{href: '/register'} Register
+      = styled_flash
+      =yield
