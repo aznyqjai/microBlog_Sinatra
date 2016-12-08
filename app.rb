@@ -83,6 +83,25 @@ get '/register' do
   haml :register
 end
 
+get '/profile/edit' do
+  haml :edit
+end
+
+post '/profile/update' do
+  puts params.inspect
+  # byebug
+  current_user.update_attributes(params[:user])
+  flash[:btn] = "you've succesfully update your profile"
+  redirect '/'
+end
+
+post '/profile/delete' do
+  current_user.destroy
+  session[:user_id] = nil
+  flash[:btn] = "you've succesfully delete your account"
+  redirect '/'
+end
+
 post '/register' do
   puts params.inspect
   User.create(email: params[:email], username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])

@@ -1,0 +1,23 @@
+- if current_user
+  %h1 Edit Profile Page
+  %form{:action => "/profile/update", :method => "POST"}
+    %label{:for => "username"} Username
+    %input{:name => "user[username]", :type => "text", :value => "#{current_user.username}"}/
+    %br
+    %label{:for => "first_name"} First Name
+    %input{:name => "user[first_name]", :type => "text", :value => "#{current_user.first_name}"}/
+    %br
+    %label{:for => "last_name"} Last Name
+    %input{:name => "user[last_name]", :type => "text", :value => "#{current_user.last_name}"}/
+    %br
+    %label{:for => "email"} Email
+    %input{:name => "user[email]", :type => "text", :value => "#{current_user.email}"}/
+    %br
+    %input{:type => "submit"}/
+
+  %form{:action => "/profile/delete", :method => "POST"}
+    %label Delete Account
+    %input{:type => "submit", :value=>"DELETE"}/
+- else 
+  %p Not Logged
+  %p Should Not have access here
