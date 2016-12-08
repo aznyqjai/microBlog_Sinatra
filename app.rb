@@ -17,6 +17,11 @@ class App < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
+get '/posts' do
+  @posts = Post.all
+  haml :posts
+end
+
 def current_user
   if session[:user_id]
     @current_user ||= User.find(session[:user_id])
@@ -107,6 +112,10 @@ post '/register' do
   User.create(email: params[:email], username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
   # flash[:notice] = "you've sucessfully registered!"
   redirect '/login'
+end
+
+get '/posts' do
+  haml :posts
 end
 
 run! if __FILE__ == $0
