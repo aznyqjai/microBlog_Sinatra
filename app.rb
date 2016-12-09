@@ -43,7 +43,7 @@ class App < Sinatra::Base
     haml :user
   end
 
-  get '/users/:id' do
+  get '/user/:id' do
     @user = User.find(params[:id])
     @posts = @user.posts
     # byebug

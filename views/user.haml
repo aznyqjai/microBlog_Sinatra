@@ -7,6 +7,9 @@
   = @user.id
   %br
 
+%h2 
+  = @user.full_name
+
 - @posts.each do |post|
   = post.body 
   %br

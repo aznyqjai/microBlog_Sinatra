@@ -4,16 +4,20 @@
   %link{:type => "text/css", :rel => "stylesheet", :href => "/css/style.css"}
   %title Sinatra-ActiveRecord
   %body
-    %nav
-      %ul
-        %li 
-          %a{href: '/'} Home
-        %li 
-          %a{href: '/users'} Users
-        %li
-          %a{href: '/post/new'} New Post
-          / %a{href: '/users/create'} Create Users
-          / %a{href: '/users/last'} Last
+    .nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %a{:class => "navbar-brand", :href=> "/"} MircroBlog
+        %ul{:class=>"nav navbar-nav"}
+          %li 
+            %a{href: '/'} Home
+          / %li 
+          /   %a{href: '/users'} Users
+          %li
+            %a{href: '/post/new'} New Post
+            / %a{href: '/users/create'} Create Users
+            / %a{href: '/users/last'} Last
+        %ul{:class=> "nav navbar-nav navbar-right"}
           - if current_user
             %li
               %a{href: '/logout'} Logout
@@ -21,9 +25,17 @@
               %a{href: '/profile/edit'} Edit Profile
           - else
             %li
-              %a{href: '/login'} Login
+              %a{href: '/login'}
+                Login
+                %span{:class=>"glyphicon glyphicon-log-in"}
             %li
-              %a{href: '/register'} Register
+              %a{href: '/register'} 
+                Register
+                %span{:class=>"glyphicon glyphicon-user"}
     
-    = styled_flash
+  = styled_flash
+  .container#bodycontent
     =yield
+
+  %script{:type => "text/javascript", :src=> "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
+  %script{:type => "text/javascript", :src=> "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}

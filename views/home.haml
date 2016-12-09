@@ -4,11 +4,13 @@
 %h1 Home Latest Posts
 
 - @posts.each do |post| 
-  / .post %p= post.body + " " + "by: "+post.user.username
   .post{:id => "post#{post.id}"}
     %p
       %a{href: "/posts/#{post.id}"}
-        = post.title + "    by: "
-      %span= post.user.username    
+        = post.title
+      #postedby
+      by:
+      %a{href: "/user/#{post.user.id}"}
+        = post.user.username    
   %br 
 %br
