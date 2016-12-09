@@ -1,4 +1,11 @@
-%h1 Sinatra ActiveRecord Home
 - if current_user
   %h2= 'Welcome ' + @current_user.first_name
 
+%h1 Home Latest Posts
+
+- @posts.each do |post| 
+  / .post %p= post.body + " " + "by: "+post.user.username
+  .post{:id => "post#{post.id}"}
+    %p= post.body + "    by: "+post.user.username
+  %br 
+%br

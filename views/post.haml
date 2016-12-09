@@ -1,0 +1,14 @@
+%h1 Create Post
+- if current_user
+  %h2= "hello " + @current_user.first_name + ", " + "  want to post something?"
+
+%form{:action => "/posts/new", :method => "POST"}
+  %label{:for => "title"} Title
+  %br
+  %input{:name => "post[title]", :type => "text"}/
+  %br
+  %label{:for => "body"} Body
+  %br
+  %textarea{:name => "post[body]"}
+  %br
+  %input{:type => "submit"}/

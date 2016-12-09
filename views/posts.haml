@@ -1,7 +1,0 @@
-%h1 Latest Posts
-- @posts.each do |post| 
-  / .post %p= post.body + " " + "by: "+post.user.username
-  .post{:id => "post#{post.id}"}
-    %p= post.body + "    by: "+post.user.username
-  %br 
-%br

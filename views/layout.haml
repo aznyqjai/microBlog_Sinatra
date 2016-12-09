@@ -5,15 +5,25 @@
   %title Sinatra-ActiveRecord
   %body
     %nav
-      %a{href: '/'} Home
-      %a{href: '/users'} Users
-      / %a{href: '/users/create'} Create Users
-      / %a{href: '/users/last'} Last
-      - if current_user
-        %a{href: '/logout'} Logout
-        %a{href: '/profile/edit'} Edit Profile
-      - else
-        %a{href: '/login'} Login
-        %a{href: '/register'} Register
-      = styled_flash
-      =yield
+      %ul
+        %li 
+          %a{href: '/'} Home
+        %li 
+          %a{href: '/users'} Users
+        %li
+          %a{href: '/posts/create'} Create Post
+          / %a{href: '/users/create'} Create Users
+          / %a{href: '/users/last'} Last
+          - if current_user
+            %li
+              %a{href: '/logout'} Logout
+            %li
+              %a{href: '/profile/edit'} Edit Profile
+          - else
+            %li
+              %a{href: '/login'} Login
+            %li
+              %a{href: '/register'} Register
+    
+    = styled_flash
+    =yield
