@@ -2,7 +2,7 @@
 - if current_user
   %h2= "hello " + @current_user.first_name + ", " + "  want to post something?"
 
-%form{:action => "/posts/new", :method => "POST"}
+%form{:action => "/posts/create", :method => "POST"}
   %label{:for => "title"} Title
   %br
   %input{:name => "post[title]", :type => "text"}/

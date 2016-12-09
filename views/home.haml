@@ -6,6 +6,9 @@
 - @posts.each do |post| 
   / .post %p= post.body + " " + "by: "+post.user.username
   .post{:id => "post#{post.id}"}
-    %p= post.body + "    by: "+post.user.username
+    %p
+      %a{href: "/posts/#{post.id}"}
+        = post.title + "    by: "
+      %span= post.user.username    
   %br 
 %br

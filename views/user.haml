@@ -6,9 +6,13 @@
   %br
   = @user.id
   %br
+
+- @posts.each do |post|
+  = post.body 
+  %br
+  / %br
 - if @user.reservations.count > 0
   %h2 Your Reservations
   - @user.reservations.each do |r|
     = 'Your ' + r.room.name + ' room reservation at ' + r.room.hotel_name
     %br
-  = @user.posts

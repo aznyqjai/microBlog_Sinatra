@@ -45,7 +45,8 @@ class App < Sinatra::Base
 
   get '/users/:id' do
     @user = User.find(params[:id])
-    # @posts = Post.find()
+    @posts = @user.posts
+    # byebug
     haml :user
   end
 
@@ -108,15 +109,22 @@ class App < Sinatra::Base
     redirect '/login'
   end
 
-  get '/posts/create' do
-    haml :post
+  get '/post/new' do
+    haml :post_new
   end
 
-  post '/posts/new' do
+  post '/posts/create' do
     puts params.inspect
     params[:post][:user_id] = current_user.id
     Post.create(params[:post])
     redirect '/'
+  end
+
+  get '/posts/:id' do
+    @post = Post.find(params[:id])
+    # @posts = @user.posts
+    # byebug
+    haml :posts
   end
 
   run! if __FILE__ == $0
