@@ -4,13 +4,23 @@
 %h1 Home Latest Posts
 
 - @posts.each do |post| 
-  .post{:id => "post#{post.id}"}
-    %p
-      %a{href: "/posts/#{post.id}"}
-        = post.title
-      #postedby
-      by:
-      %a{href: "/user/#{post.user.id}"}
-        = post.user.username    
+  .post-outer
+    .row.postThum
+      .col-xs-5.thumImg
+        %a{:href => "posts/#{post.id}"}
+          .thumImgBG{:style => "background-image: url(#{post.asset_img});background-repeat: no-repeat;width: 100%;height: 200px;"}
+            / .thumImgOverlay
+      .col-xs-7.thumCon
+        %h1.post-title.entry-title.thumTitle
+          %a{:href => "posts/#{post.id}"} 
+            = post.title
+        %p.thumSnippet
+          = post.body 
+        .thumData.postData
+          %span.post-timestamp
+            %span.published 
+              = post.created_at
+          %span.post-comment-num
+            = post.user.username
   %br 
 %br
