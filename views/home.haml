@@ -21,6 +21,7 @@
             %span.published 
               = post.created_at
           %span.post-comment-num
-            = post.user.username
+            %a{href: "user/#{post.user.id}"}
+              = post.user.username
   %br 
 %br
