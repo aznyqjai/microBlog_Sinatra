@@ -15,5 +15,5 @@ gem 'pg'
 
 group :development, :test do
  gem 'sqlite3'
- gem 'byebug'
+# gem 'byebug'
 end
