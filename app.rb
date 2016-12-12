@@ -24,7 +24,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    @posts = Post.all
+    @posts = Post.all.reverse
     haml :home
   end
 
