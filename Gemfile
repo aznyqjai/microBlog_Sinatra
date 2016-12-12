@@ -7,12 +7,13 @@ gem 'sinatra-contrib'
 gem 'sinatra-flash'
 
 gem 'activerecord'
-gem 'sqlite3'
-
 gem 'rake'
 gem 'awesome_print'
 gem 'haml'
+gem 'pg'
+
 
 group :development, :test do
-  gem 'byebug'
+ gem 'sqlite3'
+ gem 'byebug'
 end
