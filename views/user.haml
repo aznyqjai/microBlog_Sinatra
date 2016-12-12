@@ -2,20 +2,42 @@
 %p
   = @user.full_name
   %br
-  = @user.email
-  %br
-  = @user.id
-  %br
-
-%h2 
-  = @user.full_name
-
-- @posts.each do |post|
-  = post.body 
-  %br
+  / = @user.email
   / %br
-- if @user.reservations.count > 0
-  %h2 Your Reservations
-  - @user.reservations.each do |r|
-    = 'Your ' + r.room.name + ' room reservation at ' + r.room.hotel_name
-    %br
+  / = @user.id
+  / %br
+
+%h2
+
+- if @posts.count>0
+  - @posts.each do |post| 
+    .post-outer
+      .row.postThum
+        .col-xs-5.thumImg
+          %a{:href => "/posts/#{post.id}"}
+            .thumImgBG{:style => "background-image: url(#{post.asset_img});background-repeat: no-repeat;width: 100%;height: 200px;"}
+              / .thumImgOverlay
+        .col-xs-7.thumCon
+          %h1.post-title.entry-title.thumTitle
+            %a{:href => "/posts/#{post.id}"} 
+              = post.title
+          %p.thumSnippet
+            = post.body 
+          .thumData.postData
+            %span.post-timestamp
+              %span.published 
+                = post.created_at
+            %span.post-comment-num
+              %a{href: "/user/#{post.user.id}"}
+                = post.user.username
+    %br 
+  %br
+
+- else 
+  %p
+    you don't have any posts yet
+  / - if @user.reservations.count > 0
+  /   %h2 Your Reservations
+  /   - @user.reservations.each do |r|
+  /     = 'Your ' + r.room.name + ' room reservation at ' + r.room.hotel_name
+  /     %br
